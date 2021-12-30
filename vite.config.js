@@ -14,8 +14,8 @@ export default defineConfig(({ command, mode }) => {
       lib: mode === "lib" ? {
         entry: "src/main.js",
         formats: ["es"],
-        fileName: "main"
-      }: {},
+        fileName: "main",
+      }: null,
       rollupOptions: {
         // https://rollupjs.org/guide/en/#external
         // if one lib marked as external, then it will not bundled inside our js files.
