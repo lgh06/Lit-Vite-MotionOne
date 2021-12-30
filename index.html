@@ -11,5 +11,9 @@
     <my-element>
       <p>This is child content</p>
     </my-element>
+    <script type="module">
+      import {animate} from "./src/AnimateTools.js"
+      animate(document.querySelector('my-element'))
+    </script>
   </body>
 </html>
