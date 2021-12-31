@@ -5,15 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Lit App</title>
-    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/components.js"></script>
   </head>
   <body>
-    <my-element>
+    <first-element>
       <p>This is child content</p>
-    </my-element>
+    </first-element>
     <script type="module">
-      import {animate} from "./src/AnimateTools.js"
-      animate(document.querySelector('my-element'))
+      import main from './src/IndexPage.js';
+      main()
     </script>
   </body>
 </html>

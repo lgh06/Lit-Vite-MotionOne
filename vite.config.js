@@ -12,17 +12,17 @@ export default defineConfig(({ command, mode }) => {
       // https://vitejs.dev/guide/build.html#library-mode
       // https://vitejs.dev/config/#build-lib
       lib: mode === "lib" ? {
-        entry: "src/main.js",
+        entry: "src/components.js",
         formats: ["es"],
-        fileName: "main",
+        fileName: "components",
       }: null,
       rollupOptions: {
         // https://rollupjs.org/guide/en/#external
         // if one lib marked as external, then it will not bundled inside our js files.
         external: (mode === "production" || mode === "lib") ? "" : /^lit/,
         // https://vitejs.dev/guide/build.html#multi-page-app
-        input: {
-          main: resolve(__dirname, 'index.html'), // index.html's "main" can be anything
+        input: mode === "lib" ? null : {
+          components: resolve(__dirname, 'index.html'), // index.html's entry js
           another: resolve(__dirname, 'another.html') //  key "another" produces another.[hash].js
         },
         output:{

@@ -6,7 +6,7 @@ import { html, css, LitElement } from 'lit'
  * @slot - This element has a slot
  * @csspart button - The button
  */
-export class MyElement extends LitElement {
+export class FirstElement extends LitElement {
   static get styles() {
     return css`
       :host {
@@ -53,4 +53,4 @@ export class MyElement extends LitElement {
   }
 }
 
-window.customElements.define('my-element', MyElement)
+window.customElements.define('first-element', FirstElement)
