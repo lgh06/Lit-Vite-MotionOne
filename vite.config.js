@@ -19,7 +19,7 @@ export default defineConfig(({ command, mode }) => {
       rollupOptions: {
         // https://rollupjs.org/guide/en/#external
         // if one lib marked as external, then it will not bundled inside our js files.
-        external: (mode === "production" || mode === "lib") ? "" : /^lit/,
+        external: (mode === "production" || mode === "lib") ? "" : [/^lit/, "motion"],
         // https://vitejs.dev/guide/build.html#multi-page-app
         input: mode === "lib" ? null : {
           components: resolve(__dirname, 'index.html'), // index.html's entry js
