@@ -12,7 +12,7 @@ export default defineConfig(({ command, mode }) => {
       // https://vitejs.dev/guide/build.html#library-mode
       // https://vitejs.dev/config/#build-lib
       lib: mode === "lib" ? {
-        entry: "src/components.js",
+        entry: "src/components.ts",
         formats: ["es"],
         fileName: "components",
       }: null,
