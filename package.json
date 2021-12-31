@@ -17,6 +17,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "json5": "^2.2.0",
     "lit": "^2.0.2",
     "motion": "^10.4.0"
   },

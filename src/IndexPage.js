@@ -3,6 +3,6 @@ import {animate as testAnimate} from "./Animate.js";
 import {animate} from "motion";
 export default function(){
   // animate(document.querySelector('first-element'))
-  animate('first-element', {x: 200},{duration: 5})
+  // animate('first-element', {x: 200},{duration: 5})
   console.log('Index Page')
 }
