@@ -11,7 +11,7 @@
     "src"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:3000/dnd.html && start http://localhost:3000/dnd.html\"",
     "build": "tsc && vite build",
     "lib": "tsc && vite build --mode lib",
     "preview": "vite preview"
@@ -22,7 +22,9 @@
     "motion": "^10.4.0"
   },
   "devDependencies": {
+    "concurrently": "^6.5.1",
     "typescript": "^4.5.4",
-    "vite": "^2.7.9"
+    "vite": "^2.7.9",
+    "wait-on": "^6.0.0"
   }
 }
