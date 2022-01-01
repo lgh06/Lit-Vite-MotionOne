@@ -1,4 +1,5 @@
 import Moveable from "moveable";
+import { animate } from "motion";
 
 export default function () {
   console.log('dnd')
@@ -71,6 +72,7 @@ export default function () {
     rotatable: true,
     throttleRotate: 0,
     rotationPosition: "top",
+    dragArea: false,
   });
 
   const frame = {
@@ -78,7 +80,7 @@ export default function () {
     scale: [1, 1],
     rotate: 0,
   };
-  moveable
+  const move1 = moveable
     // --- drag ---
     .on("dragStart", e => {
       e.set(frame.translate);
@@ -87,8 +89,11 @@ export default function () {
       // when drag, only translate changed, other values keep old
       frame.translate = e.beforeTranslate;
       e.target.style.transform
-        = `translate(${e.beforeTranslate[0]}px, ${e.beforeTranslate[1]}px)`
-        + `scale(${frame.scale[0]}, ${frame.scale[1]})`;
+        = `translate(${frame.translate[0]}px, ${frame.translate[1]}px) `
+        + `rotate(${frame.rotate}deg) `
+        + `scale(${frame.scale[0]}, ${frame.scale[1]}) `
+        console.log(e, frame)
+
     })
     .on("dragEnd", e => {
       console.log("onDragEnd", e.target, e.isDrag);
@@ -100,29 +105,54 @@ export default function () {
       // If a drag event has already occurred, there is no dragStart.
       dragStart && dragStart.set(frame.translate);
     })
-    .on("scale", ({ target, scale, drag }) => {
+    .on("scale", (e) => {
+      const { target, scale, drag } = e;
       // when scale, only scale changed, other values keep old
-
       frame.scale = scale;
       // get drag event
       frame.translate = drag.beforeTranslate;
       target.style.transform
-        = `translate(${drag.beforeTranslate[0]}px, ${drag.beforeTranslate[1]}px)`
-        + `scale(${scale[0]}, ${scale[1]})`;
+        = `translate(${frame.translate[0]}px, ${frame.translate[1]}px) `
+        + `rotate(${frame.rotate}deg) `
+        + `scale(${frame.scale[0]}, ${frame.scale[1]}) `
+
+
+      console.log(e, frame)
     })
     .on("scaleEnd", ({ target, isDrag, clientX, clientY }) => {
       console.log("onScaleEnd", target, isDrag);
     })
     // --- rotate ---
-    .on("rotateStart", ({ set }) => {
+    .on("rotateStart", ({ set, dragStart }) => {
       set(frame.rotate);
+      dragStart && dragStart.set(frame.translate);
     })
-    .on("rotate", ({ target, beforeRotate }) => {
-      console.log(datas)
+    .on("rotate", (e) => {
+      const { target, beforeRotate } = e;
         frame.rotate = beforeRotate;
-        target.style.transform = `rotate(${beforeRotate}deg)`;
+        target.style.transform 
+          = `translate(${frame.translate[0]}px, ${frame.translate[1]}px) `
+          + `rotate(${frame.rotate}deg) `
+          + `scale(${frame.scale[0]}, ${frame.scale[1]}) `
+      console.log(e, frame)
+
     })
     .on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
         console.log("onRotateEnd", target, isDrag);
     })
+
+    window.move1 = move1
+    document.querySelector('#btn1').addEventListener('click', (e)=>{
+      const trans = window.getComputedStyle(document.querySelector('.ele')).transform;
+      console.dir(trans)
+      let tr = 'matrix(1.8357, 0.490109, -0.26698, 0.999973, 980, 133.5)'
+      animate(document.querySelector('.ele'),{transform: tr}, {duration: 5})
+    });
+    let opacity = 0;
+    document.querySelector('#btn2').addEventListener('click', (e)=>{
+      document.querySelector('.moveable-control-box.rCSwtyrwf').style.opacity = opacity; 
+      opacity = + !opacity
+    });
+
+    
 }
