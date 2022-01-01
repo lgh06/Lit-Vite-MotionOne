@@ -19,7 +19,8 @@
   "dependencies": {
     "json5": "^2.2.0",
     "lit": "^2.0.2",
-    "motion": "^10.4.0"
+    "motion": "^10.4.0",
+    "moveable": "^0.27.2"
   },
   "devDependencies": {
     "concurrently": "^6.5.1",
