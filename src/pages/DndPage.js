@@ -85,7 +85,12 @@ export default function () {
     .on("dragStart", e => {
       e.set(frame.translate);
     })
-    .on("drag", (e) => {
+    .on("drag", function(e){
+      // const { inputEvent, target, stop } = e;
+      // move1.getManager().updateRect();
+      // if (target.nodeName === "DIV") {
+      //   stop();
+      // }
       // when drag, only translate changed, other values keep old
       frame.translate = e.beforeTranslate;
       e.target.style.transform
@@ -142,11 +147,14 @@ export default function () {
     })
 
     window.move1 = move1
-    document.querySelector('#btn1').addEventListener('click', (e)=>{
+    document.querySelector('#btn1').addEventListener('click', async (e)=>{
       const trans = window.getComputedStyle(document.querySelector('.ele')).transform;
       console.dir(trans)
       let tr = 'matrix(1.8357, 0.490109, -0.26698, 0.999973, 980, 133.5)'
-      animate(document.querySelector('.ele'),{transform: tr}, {duration: 5})
+      let an = animate(document.querySelector('.ele'),{transform: tr}, {duration: 5})
+      await an.finished;
+      move1.getManager().updateRect();
+
     });
     let opacity = 0;
     document.querySelector('#btn2').addEventListener('click', (e)=>{
