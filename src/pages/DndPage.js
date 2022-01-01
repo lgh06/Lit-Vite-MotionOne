@@ -59,21 +59,70 @@ export default function () {
   const moveable = new Moveable(document.querySelector('.moveable-area-wrap'), {
     // If you want to use a group, set multiple targets(type: Array<HTMLElement | SVGElement>).
     target: document.querySelector('.ele'),
+    // drag
     draggable: true,
     throttleDrag: 0,
     throttleDragRotate: 0,
+    // scale
+    scalable: true,
+    throttleScale: 0,
+    keepRatio: false,
+    // rotate
+    rotatable: true,
+    throttleRotate: 0,
+    rotationPosition: "top",
   });
 
   const frame = {
     translate: [0, 0],
+    scale: [1, 1],
+    rotate: 0,
   };
-  moveable.on("dragStart", e => {
-    e.set(frame.translate);
-  }).on("drag", e => {
-    frame.translate = e.beforeTranslate;
-    e.target.style.transform
-      = `translate(${e.beforeTranslate[0]}px, ${e.beforeTranslate[1]}px)`;
-  }).on("dragEnd", e => {
-    console.log("onDragEnd", e.target, e.isDrag);
-  });
+  moveable
+    // --- drag ---
+    .on("dragStart", e => {
+      e.set(frame.translate);
+    })
+    .on("drag", (e) => {
+      // when drag, only translate changed, other values keep old
+      frame.translate = e.beforeTranslate;
+      e.target.style.transform
+        = `translate(${e.beforeTranslate[0]}px, ${e.beforeTranslate[1]}px)`
+        + `scale(${frame.scale[0]}, ${frame.scale[1]})`;
+    })
+    .on("dragEnd", e => {
+      console.log("onDragEnd", e.target, e.isDrag);
+    })
+    // --- scale ---
+    .on("scaleStart", ({ set, dragStart }) => {
+      set(frame.scale);
+
+      // If a drag event has already occurred, there is no dragStart.
+      dragStart && dragStart.set(frame.translate);
+    })
+    .on("scale", ({ target, scale, drag }) => {
+      // when scale, only scale changed, other values keep old
+
+      frame.scale = scale;
+      // get drag event
+      frame.translate = drag.beforeTranslate;
+      target.style.transform
+        = `translate(${drag.beforeTranslate[0]}px, ${drag.beforeTranslate[1]}px)`
+        + `scale(${scale[0]}, ${scale[1]})`;
+    })
+    .on("scaleEnd", ({ target, isDrag, clientX, clientY }) => {
+      console.log("onScaleEnd", target, isDrag);
+    })
+    // --- rotate ---
+    .on("rotateStart", ({ set }) => {
+      set(frame.rotate);
+    })
+    .on("rotate", ({ target, beforeRotate }) => {
+      console.log(datas)
+        frame.rotate = beforeRotate;
+        target.style.transform = `rotate(${beforeRotate}deg)`;
+    })
+    .on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
+        console.log("onRotateEnd", target, isDrag);
+    })
 }
