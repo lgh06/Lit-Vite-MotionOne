@@ -30,6 +30,7 @@ export default class NameTag extends LitElement {
   }
   async clickButton() {
     console.log(this.param)
+    // window.animate2 = animate;
     this.param.forEach((v, i) => {
       if(this.paramJSON[i] === undefined){
         if(String(v).startsWith("{")){

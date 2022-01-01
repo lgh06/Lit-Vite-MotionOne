@@ -5,8 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .drop-zone{
+      width: 100%;
+      min-height: 30vh;
+      background-color: #eee;
+    }
+  </style>
 </head>
 <body>
+  <div class="main-canvas">
+    <div draggable="true" class="element-one">test element one</div>
+    <img class="img" draggable="true" src="//via.placeholder.com/350x150" />
+    <div class="drop-zone">drop-zone</div>
+  </div>
   
   <script type="module">
     import main from './src/pages/DndPage.js';
