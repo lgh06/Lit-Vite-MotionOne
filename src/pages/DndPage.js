@@ -55,7 +55,7 @@ export default function () {
    * 以下是moveable库的测试
    */
 
-
+  //  https://github.com/daybrush/moveable/blob/master/handbook/handbook.md#vanilla-example
   const moveable = new Moveable(document.querySelector('.moveable-area-wrap'), {
     // If you want to use a group, set multiple targets(type: Array<HTMLElement | SVGElement>).
     target: document.querySelector('.ele'),
