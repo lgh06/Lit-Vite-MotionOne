@@ -11,7 +11,7 @@
     "src"
   ],
   "scripts": {
-    "dev": "concurrently \"vite\" \"wait-on http://localhost:3000/dnd.html && start http://localhost:3000/dnd.html\"",
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:3000/anime.html && start http://localhost:3000/anime.html\"",
     "build": "tsc && vite build",
     "lib": "tsc && vite build --mode lib",
     "preview": "vite preview"

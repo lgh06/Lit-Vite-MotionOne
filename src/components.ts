@@ -1,4 +1,3 @@
 // export many <web-components><web-components>
-export * from './web-components/first-element.js';
-export * from './web-components/anime-gen';
+export * from './web-components/index';
 console.log('export all components')

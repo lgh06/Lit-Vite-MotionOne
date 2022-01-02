@@ -24,7 +24,7 @@ export default defineConfig(({ command, mode }) => {
         // https://vitejs.dev/guide/build.html#multi-page-app
         input: mode === "lib" ? null : {
           components: resolve(__dirname, 'index.html'), // index.html's entry js
-          another: resolve(__dirname, 'another.html'), //  key "another" produces another.[hash].js
+          anime: resolve(__dirname, 'anime.html'), //  key "anime" produces anime.[hash].js
           dnd: resolve(__dirname, 'dnd.html')
         },
         output:{

@@ -4,5 +4,6 @@ deps:
 ```
 Lit  
 Motion One  
-Moveable
-```
+Moveable  
+```  
+[Ideas](https://trip.feishu.cn/wiki/wikcnz6DnYmOUU8OfNhUm9LiCre)  (private link)
