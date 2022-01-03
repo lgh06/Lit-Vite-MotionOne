@@ -73,6 +73,7 @@ export default function () {
     throttleRotate: 0,
     rotationPosition: "top",
     dragArea: false,
+    passDragArea: true,
   });
 
   const frame = {
@@ -145,6 +146,13 @@ export default function () {
     .on("rotateEnd", ({ target, isDrag, clientX, clientY }) => {
         console.log("onRotateEnd", target, isDrag);
     })
+
+    window.addEventListener("resize", e => {
+      console.log(move1);
+      console.log(move1.getManager())
+      move1.target = document.querySelector('.ele2')
+      // move1.updateTarget();
+    });
 
     window.move1 = move1
     document.querySelector('#btn1').addEventListener('click', async (e)=>{
