@@ -2,3 +2,4 @@
 export * from './first-element.js';
 export * from './anime-gen';
 export * from './area-anime';
+export * from './pass-calculator';
