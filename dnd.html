@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .drop-zone{
+      width: 100%;
+      /* min-height: 30vh; */
+      height: 30vh;
+      background-color: #eee;
+    }
+    .moveable-area-wrap{
+      /* min-height: 200px; */
+      height: 200px;
+      width: 100%;
+      display: block;
+    }
+    .moveable-area{
+      height: 100%;
+    }
+    .ele{
+      width: 200px;
+      height: 200px;
+      display: block;
+      background-color: #eee;
+    }
+  </style>
+  <script type="module" crossorigin src="./dnd.06bc6b71.js"></script>
+  <link rel="modulepreload" href="./assets/animate.es.f4ca49b5.js">
+</head>
+<body>
+  <div class="main-canvas">
+    <div draggable="true" class="element-one">test element one</div>
+    <img class="img" draggable="true" src="//via.placeholder.com/350x150" />
+    <div class="drop-zone">drop-zone</div>
+  </div>
+  <div class="moveable-area-wrap">
+    <div class="moveable-area">
+      <div class="ele" contenteditable="true">test moveable element one</div>
+      <div class="ele2">test moveable element one</div>
+      <button id="btn1">calculate CSS transform</button>
+      <button id="btn2">hide moveable control box</button>
+    </div>
+  </div>
+  
+  
+</body>
+</html>
